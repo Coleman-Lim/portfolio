@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="mediaqueries.css">
 
 </head>
+
 <body>
     <nav id="desktop-nav">
         <div class="logo">John Doe</div>
@@ -21,15 +23,15 @@
             </ul>
         </div>
     </nav>
-    <nav id = "hamburger-nav">
+    <nav id="hamburger-nav">
         <div class="logo">John Doe</div>
-        <div class = "hamburger-menu">
-            <div class = "hamburger-icon" onclick="toggleMenu()">
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class ="menu-links">
+            <div class="menu-links">
                 <li><a href="#about" onclick="toggleMenu()">About</a></li>
                 <li><a href="#experiences" onclick="toggleMenu()">Experiences</a></li>
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
@@ -43,17 +45,47 @@
             <img src="./images/profile-pic.png" alt="My Profile Picture">
 
         </div>
-        <div class="section-text">
-            <p class ="section_text_p1">Hello, I'm</p>
-            <h1 class = "title">John Doe</h1>
-            <p class = "section_text_p2">Frontend Developer</p>
-            <div class ='btn-container'>
-                <button class = "btn btn-color-2" onclick="window.open('./images/resume-example.pdf')">Download CV</button>
-                <button class = "btn btn-color-1" onclick="location.href ='./#contacts'">Contact Info</button>
+        <div class="section_text">
+            <p class="section_text_p1">Hello, I'm</p>
+            <h1 class="title">John Doe</h1>
+            <p class="section_text_p2">Frontend Developer</p>
+            <div class='btn-container'>
+                <button class="btn btn-color-2" onclick="window.open('./images/resume-example.pdf')">Download
+                    CV</button>
+                <button class="btn btn-color-1" onclick="location.href ='./#contacts'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./images/linkedin.png" alt="My LinkedIn profile" class="icon"
+                    onclick="location.href='https://www.linkedin.com/in/coleman-lim-172b41272/'">
+                <img src="./images/github.png" alt="My Github profile" class="icon"
+                    onclick="location.href='https://github.com/Coleman-Lim'">
+            </div>
+        </div>
+        </div>
+    </section>
+    <section id = "about">
+        <p class="section_text_p1">Get To Know More</p>
+        <p class="title">About Me</p>
+        <div class="section-container">
+            <div class = "section_pic-container">
+                <img src = "./images/about-pic.png"
+                alt = "profile picture"
+                class ="about-pic"
+            />
+            </div>
+            <div class = "about-details-container">
+                <div class="about-container">
+                    <div class="details-container">
+                        <img src="./images/experience.png" alt="experience.png" class="icon"/>
+                        <h3>Experience</h3>
+                        <p>2+ Years<br>Frontend Development</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
