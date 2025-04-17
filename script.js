@@ -49,3 +49,5 @@ const lightbox = document.getElementById('lightbox');
         lightboxImg.src = '';
       }
     });
+
+    
