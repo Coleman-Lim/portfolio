@@ -12,6 +12,8 @@
     #projects {
         height: fit-content;
     }
+    
+    
 }
 
 @media screen and (max-width: 1200px) {
@@ -55,6 +57,7 @@
     .about-containers {
         margin-top: 0;
     }
+    
 }
 
 @media screen and (max-width: 600px) {
@@ -124,4 +127,7 @@
     .text-container {
         text-align: justify;
     }
+    
+    
 }
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery Hover Grid</title>
+  <style>
+    
+    .gallery {
+      max-width: 1200px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      padding: 0 20px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .show-more {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .show-more button {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px 28px;
+      font-size: 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .show-more button:hover {
+      background: #fff;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery">
+    <div class="card"><img src="images/about-pic.png" alt="Design 1"></div>
+    <div class="card"><img src="https://via.placeholder.com/600x400?text=Design+2" alt="Design 2"></div>
+    <div class="card"><img src="https://via.placeholder.com/600x400?text=Design+3" alt="Design 3"></div>
+    <div class="card"><img src="https://via.placeholder.com/600x400?text=Design+4" alt="Design 4"></div>
+    <div class="card"><img src="https://via.placeholder.com/600x400?text=Design+5" alt="Design 5"></div>
+    <div class="card"><img src="https://via.placeholder.com/600x400?text=Design+6" alt="Design 6"></div>
+  </div>
+
+  <div class="show-more">
+    <button>Show More →</button>
+  </div>
+
+</body>
+</html>
