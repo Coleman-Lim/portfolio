@@ -61,6 +61,15 @@
         width: 30%;
       }
 
+      .card-style {
+        border: rgb(53, 53, 53) 0.1rem solid;
+        border-color: rgb(163, 163, 163);
+        border-radius: 2rem;
+        flex: 1;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
       /* Video preview */
       .model-preview {
         width: 100%;
@@ -183,10 +192,11 @@
 
       .form-label {
         display: block;
-        font-weight: 500;
         margin-bottom: 8px;
         font-size: 1.2rem;
         font-family: "Poppins", sans-serif;
+        white-space: nowrap;
+        font-weight: bold;
       }
 
       .form-control {
@@ -242,14 +252,14 @@
         border-radius: 4px;
         background-color: white;
       }
-      
-      
     </style>
   </head>
   <body>
-    
     <div class="container">
-      <header class="title" style="text-align: center; margin-bottom: 30px; font-size: 1.3rem;">
+      <header
+        class="title"
+        style="text-align: center; margin-bottom: 30px; font-size: 1.3rem"
+      >
         <h1>Project One</h1>
       </header>
 
@@ -257,13 +267,11 @@
         <i class="fas fa-arrow-left"></i>
       </a>
 
-      <div class="layout">
+      <div class="layout card-style">
         <!-- Left column: Preview and action buttons -->
         <div class="left-column">
           <!-- Model preview -->
-          <div class="model-preview">
-            
-          </div>
+          <div class="model-preview"></div>
 
           <!-- Action buttons directly under the video -->
           <div class="action-buttons">
