@@ -326,16 +326,22 @@
       visibility: visible;
     }
 
-    .lightbox-content {
+    .lightbox-content,
+    .lightbox-content1 {
       width: 90%;
       max-width: 900px;
       position: relative;
     }
 
+    .lightbox-content1 {
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* Only affects video-based lightboxes */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
-      /* 16:9 ratio */
       height: 0;
       overflow: hidden;
       border-radius: 8px;
@@ -351,10 +357,48 @@
       border: none;
     }
 
+    /* NEW: For image slides */
+    .image-container {
+      width: 100%;
+      height: 500px;
+      /* or auto, depending on your image proportions */
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+    }
+
+    /* Navigation arrows */
+    .arrow-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: #fff;
+      
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      transition: background 0.3s ease;
+    }
+
+    .arrow-button:hover {
+      color: #f00;
+    }
+
+    .arrow-left {
+      left: -30px;
+    }
+
+    .arrow-right {
+      right: -30px;
+    }
+
+    /* Close button */
     .close-lightbox {
       position: absolute;
-      top: 20px;
-      right: 30px;
+      top: -25px;
+      right: -40px;
       font-size: 28px;
       color: #fff;
       cursor: pointer;
@@ -362,7 +406,22 @@
       transition: color 0.3s;
     }
 
+    .close-lightbox1 {
+      position: absolute;
+      top: -20px;
+      right: -30px;
+      font-size: 45px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s;
+    }
+
     .close-lightbox:hover {
+      color: #f00;
+    }
+
+    .close-lightbox1:hover {
       color: #f00;
     }
   </style>
@@ -392,7 +451,7 @@
             <i class="fas fa-play-circle"></i> Watch Video Demo
           </button>
           <div class="buttons-row">
-            <button class="action-btn reupload-btn">
+            <button class="action-btn reupload-btn" id="open-gallery">
               <i class="fas fa-images"></i> View Additional Images
             </button>
           </div>
@@ -444,68 +503,141 @@
             </div>
           </div>
 
+          <!-- Video Lightbox -->
           <div class="lightbox" id="video-lightbox">
             <div class="lightbox-content">
               <div class="video-container">
-                <!-- Video placeholder - you can replace this with your actual video -->
                 <video controls>
                   <source src="https://example.com/your-video.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
               </div>
-              <div class="close-lightbox" id="close-lightbox">
+              <div class="close-lightbox" id="close-video-lightbox">
                 <i class="fas fa-times"></i>
               </div>
             </div>
           </div>
 
+          <!-- Image Lightbox -->
+          <div class="lightbox" id="image-lightbox">
+            <div class="lightbox-content1">
+              <!-- Close Button -->
+              <div class="close-lightbox1" id="close-image-lightbox">×</div>
 
+              <!-- Image Container -->
+              <div class="image-container" id="image-container"
+                style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?auto=format&fit=crop&w=2198&q=80);">
+              </div>
+
+              <!-- Navigation Arrows -->
+              <div class="arrow-button arrow-left" id="arrow-left">
+                <i class="fas fa-chevron-left"></i>
+              </div>
+              <div class="arrow-button arrow-right" id="arrow-right">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
-    </div>
-    <script>
+      <script>
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const videoLightbox = document.getElementById('video-lightbox');
-        const closeLightbox = document.getElementById('close-lightbox');
-        const watchDemoBtn = document.getElementById('watch-demo-btn');
+        document.addEventListener('DOMContentLoaded', function () {
+          // VIDEO lightbox
+          const videoLightbox = document.getElementById('video-lightbox');
+          const closeVideoBtn = document.getElementById('close-video-lightbox');
+          const watchDemoBtn = document.getElementById('watch-demo-btn');
 
-
-
-        function openLightbox() {
-          videoLightbox.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
-
-
-        function closeLightboxFn() {
-          videoLightbox.classList.remove('active');
-          document.body.style.overflow = '';
-
-
-          const video = videoLightbox.querySelector('video');
-          if (video) {
-            video.pause();
+          function openVideoLightbox() {
+            videoLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
           }
-        }
 
+          function closeVideoLightbox() {
+            videoLightbox.classList.remove('active');
+            document.body.style.overflow = '';
 
-        watchDemoBtn.addEventListener('click', openLightbox);
-
-        closeLightbox.addEventListener('click', closeLightboxFn);
-
-
-        videoLightbox.addEventListener('click', function (e) {
-          if (e.target === videoLightbox) {
-            closeLightboxFn();
+            const video = videoLightbox.querySelector('video');
+            if (video) {
+              video.pause();
+            }
           }
+
+          if (watchDemoBtn) {
+            watchDemoBtn.addEventListener('click', openVideoLightbox);
+          }
+
+          if (closeVideoBtn) {
+            closeVideoBtn.addEventListener('click', closeVideoLightbox);
+          }
+
+          videoLightbox.addEventListener('click', function (e) {
+            if (e.target === videoLightbox) {
+              closeVideoLightbox();
+            }
+          });
+
+          // IMAGE lightbox
+          const openGalleryBtn = document.getElementById('open-gallery');
+          const imageLightbox = document.getElementById('image-lightbox');
+          const closeImageBtn = document.getElementById('close-image-lightbox');
+          const imageContainer = document.getElementById('image-container');
+
+
+          const images = [
+            "https://images.unsplash.com/photo-1466853817435-05b43fe45b39?auto=format&fit=crop&w=2198&q=80",
+            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2370&q=80",
+            "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?auto=format&fit=crop&w=2842&q=80"
+          ];
+
+          let currentIndex = 0;
+
+
+          if (openGalleryBtn) {
+            openGalleryBtn.addEventListener('click', () => {
+              imageLightbox.classList.add('active');
+              document.body.style.overflow = 'hidden';
+              updateImage();
+            });
+          }
+
+
+          if (closeImageBtn) {
+            closeImageBtn.addEventListener('click', () => {
+              imageLightbox.classList.remove('active');
+              document.body.style.overflow = '';
+            });
+          }
+
+
+          imageLightbox.addEventListener('click', (e) => {
+            if (e.target === imageLightbox) {
+              imageLightbox.classList.remove('active');
+              document.body.style.overflow = '';
+            }
+          });
+
+
+          function updateImage() {
+            imageContainer.style.backgroundImage = `url('${images[currentIndex]}')`;
+          }
+
+
+          document.getElementById('arrow-right').addEventListener('click', () => {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            updateImage();
+          });
+
+
+          document.getElementById('arrow-left').addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            updateImage();
+          });
+
         });
 
-
-        
-      });
-    </script>
+      </script>
 </body>
 
 </html>

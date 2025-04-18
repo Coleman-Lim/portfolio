@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Slider Lightbox</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      background-image: linear-gradient(120deg, #f9f9f9, #f2f2f2);
+      font-family: Tahoma, sans-serif;
+    }
+
+    .slider-wrapper {
+      position: relative;
+    }
+
+    .slider {
+      --slide-width: clamp(320px, 75vw, 800px);
+      --slide-height: clamp(240px, 75vh, 600px);
+
+      display: grid;
+      grid-auto-flow: column;
+      scroll-snap-type: x mandatory;
+      max-width: var(--slide-width);
+      border: 5px solid #fff;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2), 0 2px 20px rgba(0, 0, 0, 0.25);
+      overflow-y: hidden;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      scroll-snap-align: start;
+      width: var(--slide-width);
+      height: var(--slide-height);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      gap: 15px;
+      z-index: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dots a {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #fff;
+      opacity: 0.75;
+      transition: opacity ease 250ms;
+      cursor: pointer;
+    }
+
+    .dots a:hover {
+      opacity: 1;
+    }
+
+    .caption {
+      display: block;
+      margin-top: 25px;
+      color: #999;
+      letter-spacing: 0.5px;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content1 {
+      position: relative;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .gallery-btn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .gallery-btn:hover {
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Open Button -->
+  <button class="gallery-btn" id="open-gallery">View Gallery</button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="image-lightbox">
+    <div class="lightbox-content">
+      <div class="close-lightbox" id="close-lightbox1">×</div>
+
+      <div class="slider-wrapper">
+        <div class="slider">
+          <div id="slide-1" class="slide"
+            style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?auto=format&fit=crop&w=2198&q=80);">
+          </div>
+          <div id="slide-2" class="slide"
+            style="background-image: url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2370&q=80);">
+          </div>
+          <div id="slide-3" class="slide"
+            style="background-image: url(https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?auto=format&fit=crop&w=2842&q=80);">
+          </div>
+        </div>
+        <div class="dots">
+          <a href="#slide-1"></a>
+          <a href="#slide-2"></a>
+          <a href="#slide-3"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <small class="caption">Use the button to open the gallery</small>
+
+  <script>
+    const openBtn = document.getElementById('open-gallery');
+    const lightbox = document.getElementById('image-lightbox');
+    const closeBtn = document.getElementById('close-lightbox1');
+
+    openBtn.addEventListener('click', () => {
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    
+  </script>
+</body>
+</html>
