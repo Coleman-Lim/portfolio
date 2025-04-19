@@ -3,201 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Slider Lightbox</title>
+  <title>Responsive Image Lightbox</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-    }
-
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 25px;
-      background-image: linear-gradient(120deg, #f9f9f9, #f2f2f2);
-      font-family: Tahoma, sans-serif;
+      margin: 0;
+      font-family: sans-serif;
     }
 
-    .slider-wrapper {
-      position: relative;
-    }
-
-    .slider {
-      --slide-width: clamp(320px, 75vw, 800px);
-      --slide-height: clamp(240px, 75vh, 600px);
-
-      display: grid;
-      grid-auto-flow: column;
-      scroll-snap-type: x mandatory;
-      max-width: var(--slide-width);
-      border: 5px solid #fff;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2), 0 2px 20px rgba(0, 0, 0, 0.25);
-      overflow-y: hidden;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .slide {
-      scroll-snap-align: start;
-      width: var(--slide-width);
-      height: var(--slide-height);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      gap: 15px;
-      z-index: 1;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .dots a {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #fff;
-      opacity: 0.75;
-      transition: opacity ease 250ms;
-      cursor: pointer;
-    }
-
-    .dots a:hover {
-      opacity: 1;
-    }
-
-    .caption {
-      display: block;
-      margin-top: 25px;
-      color: #999;
-      letter-spacing: 0.5px;
-    }
-
-    /* Lightbox styles */
     .lightbox {
-      display: none;
       position: fixed;
-      z-index: 9999;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
       align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .lightbox.active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
     }
 
     .lightbox-content1 {
+      width: 90%;
+      max-width: 900px;
       position: relative;
       padding: 20px;
       border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .close-lightbox {
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      max-height: 80vh;
+      height: auto;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .image-description {
+      margin-top: 15px;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+    }
+
+    .arrow-button {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    .gallery-btn {
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background: #444;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
       color: #fff;
-      border: none;
-      border-radius: 6px;
+      padding: 10px;
+      border-radius: 50%;
       cursor: pointer;
+      z-index: 1001;
     }
 
-    .gallery-btn:hover {
-      background: #000;
+    .arrow-button:hover {
+      color: #f00;
+    }
+
+    .arrow-left {
+      left: -30px;
+    }
+
+    .arrow-right {
+      right: -30px;
+    }
+
+    .close-lightbox1 {
+      position: absolute;
+      top: -20px;
+      right: -30px;
+      font-size: 45px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s;
+    }
+
+    .close-lightbox1:hover {
+      color: #f00;
+    }
+
+    #open-gallery {
+      margin: 50px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Open Button -->
-  <button class="gallery-btn" id="open-gallery">View Gallery</button>
+  <button id="open-gallery">Open Gallery</button>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="image-lightbox">
-    <div class="lightbox-content">
-      <div class="close-lightbox" id="close-lightbox1">×</div>
+    <div class="lightbox-content1">
+      <!-- Close Button -->
+      <div class="close-lightbox1" id="close-image-lightbox">×</div>
 
-      <div class="slider-wrapper">
-        <div class="slider">
-          <div id="slide-1" class="slide"
-            style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?auto=format&fit=crop&w=2198&q=80);">
-          </div>
-          <div id="slide-2" class="slide"
-            style="background-image: url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2370&q=80);">
-          </div>
-          <div id="slide-3" class="slide"
-            style="background-image: url(https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?auto=format&fit=crop&w=2842&q=80);">
-          </div>
-        </div>
-        <div class="dots">
-          <a href="#slide-1"></a>
-          <a href="#slide-2"></a>
-          <a href="#slide-3"></a>
-        </div>
+      <!-- Image Container -->
+      <div class="image-container">
+        <img id="lightbox-image" src="" alt="Lightbox Image" />
+      </div>
+
+      <!-- Description -->
+      <div class="image-description" id="image-description"></div>
+
+      <!-- Navigation Arrows -->
+      <div class="arrow-button arrow-left" id="arrow-left">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="arrow-button arrow-right" id="arrow-right">
+        <i class="fas fa-chevron-right"></i>
       </div>
     </div>
   </div>
 
-  <small class="caption">Use the button to open the gallery</small>
-
   <script>
-    const openBtn = document.getElementById('open-gallery');
-    const lightbox = document.getElementById('image-lightbox');
-    const closeBtn = document.getElementById('close-lightbox1');
+    document.addEventListener('DOMContentLoaded', function () {
+      const openGalleryBtn = document.getElementById('open-gallery');
+      const imageLightbox = document.getElementById('image-lightbox');
+      const closeImageBtn = document.getElementById('close-image-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const imageDescription = document.getElementById('image-description');
 
-    openBtn.addEventListener('click', () => {
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
+      // Use local images (relative to your project)
+      const images = [
+        "images/maya-character.png",
+        "images/photo2.jpg",
+        "images/photo3.jpg"
+      ];
 
-    closeBtn.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+      const descriptions = [
+        "A peaceful nature scene with mountains and a lake.",
+        "A forest trail bathed in golden morning sunlight.",
+        "A scenic mountain view at sunset with dramatic clouds."
+      ];
 
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+      let currentIndex = 0;
+
+      function updateImage() {
+        lightboxImage.src = images[currentIndex];
+        imageDescription.textContent = descriptions[currentIndex];
       }
-    });
 
-    
+      openGalleryBtn.addEventListener('click', () => {
+        imageLightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        updateImage();
+      });
+
+      closeImageBtn.addEventListener('click', () => {
+        imageLightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      imageLightbox.addEventListener('click', (e) => {
+        if (e.target === imageLightbox) {
+          imageLightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      document.getElementById('arrow-right').addEventListener('click', () => {
+        currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+        updateImage();
+      });
+
+      document.getElementById('arrow-left').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+        updateImage();
+      });
+    });
   </script>
+
 </body>
 </html>
