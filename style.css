@@ -368,6 +368,13 @@ article h3{
     border-color:rgb(163, 163, 163);
 }
 
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
 #contact{
     display:flex;
     justify-content: center;

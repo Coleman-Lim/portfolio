@@ -12,8 +12,41 @@
     #projects {
         height: fit-content;
     }
+
+    .projects-grid {
+        gap: 1.5rem;
+    }
     
     
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1201px) {
+    .projects-grid {
+        gap: 1rem;
+    }
+    
+    .details-container.color-container {
+        padding: 1rem;
+    }
+    
+    .project-img {
+        width: 85%;
+        height: auto;
+    }
+    
+    .project-title {
+        margin: 0.75rem;
+        font-size: 1.5rem;
+    }
+    
+    .btn-container {
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.75rem;
+        width: 7rem;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -57,7 +90,48 @@
     .about-containers {
         margin-top: 0;
     }
+    .projects-grid {
+        
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
     
+}
+
+@media screen and (max-width: 1199px) and (min-width: 801px) {
+    .projects-grid {
+        gap: 1rem;
+    }
+    
+    .details-container.color-container {
+        padding: 1rem;
+    }
+    
+    .project-img {
+        width: 85%;
+        height: auto;
+    }
+    
+    .project-title {
+        margin: 0.75rem;
+        font-size: 1.5rem;
+    }
+    
+    .btn-container {
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        padding: 0.75rem;
+        width: 7rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /* Only drop to fewer columns on very small screens if necessary */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -126,6 +200,10 @@
 
     .text-container {
         text-align: justify;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
     
     
