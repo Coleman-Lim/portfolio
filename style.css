@@ -290,6 +290,7 @@ section {
     border:rgb(53,53,53) 0.1rem solid;
     border-color:rgb(163, 163, 163);
     text-align: center;
+    padding: 1rem;
     
     
 }
@@ -354,7 +355,7 @@ article h3{
 
 }
 .project-img{
-    border-radius:2rem;
+    
     width:90%;
     height:90%;
 }
@@ -366,6 +367,7 @@ article h3{
 .project-btn{
     color:black;
     border-color:rgb(163, 163, 163);
+    margin-bottom: 0;
 }
 
 .projects-grid {
