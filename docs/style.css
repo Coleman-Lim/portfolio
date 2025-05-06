@@ -268,6 +268,7 @@ section {
 }
 .btn-container{
     gap:1rem;
+    margin-bottom: 0;
 }
 
 #about{
