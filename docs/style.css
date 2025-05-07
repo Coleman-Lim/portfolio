@@ -328,7 +328,7 @@ section {
 
 #skills{
     position:relative;
-    padding-top:-20px
+    margin-top: 20px;
 }
 .experience-sub-title{
     color:rgb(85, 85, 85);
@@ -400,9 +400,6 @@ article h3{
 }
 
 #contacts{
-    display:flex;
-    justify-content: center;
-    flex-direction:column;
     height:70vh;
     
 }
