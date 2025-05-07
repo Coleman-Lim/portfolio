@@ -156,7 +156,7 @@ a:hover {
 
 section {
     padding-top: 4vh;
-    height: 96vh;
+    
     margin: 0 10rem;
     box-sizing: border-box;
     min-height: fit-content;
@@ -215,6 +215,11 @@ section {
 .title{
     font-size:3rem;
     text-align:center;
+}
+.title1{
+    font-size:3rem;
+    text-align:center;
+    padding-bottom: 20px;
 }
 #socials-container{
     display:flex;
@@ -393,11 +398,12 @@ article h3{
     margin-top: 2rem;
 }
 
-#contact{
+#contacts{
     display:flex;
     justify-content: center;
     flex-direction:column;
     height:70vh;
+    
 }
 
 .contact-info-upper-container{
@@ -531,7 +537,9 @@ footer p {
   .close-btn:hover {
     color: #f00;
   }
-
+  #certifications{
+    padding:50px;
+}
 
 
 
