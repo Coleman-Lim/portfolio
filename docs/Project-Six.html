@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Six</title>
+    <title>Project Five</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
 
@@ -447,13 +447,18 @@
             color: white;
             text-align: center;
         }
+
+        .editor-content {
+            line-height: 1.4;
+            
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <header class="title" style="text-align: center; margin-bottom: 30px; font-size: 1.3rem">
-            <h1>2D Mini-Game with Database Integration</h1>
+            <h1>Mobile App & Smartwatch Development</h1>
         </header>
 
         <a href="index.html" class="back-arrow">
@@ -465,7 +470,7 @@
             <div class="left-column">
                 <!-- Model preview -->
                 <div class="model-preview">
-                    <img src="images/AppleVsBomb login.png" alt="Project Preview"
+                    <img src="images/CovFit2.png" alt="Project Preview"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
 
@@ -499,41 +504,50 @@
                 <div class="form-group">
                     <label class="form-label">Title</label>
                     <!-- Edit here to input name of project -->
-                    <div class="input-display">AppleVsBomb</div>
+                    <div class="input-display">CovFit</div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Description</label>
                     <!-- Edit here to add a description -->
-                    <div class="editor-content"></div>
+                    <div class="editor-content">During the Covid-19 pandemic, many people were unable to exercise due to
+                        gym closures. To address this, I developed a mobile app that enables users to stay active at
+                        home through guided workout videos and personalized diet recommendations.<br><br>The app
+                        includes a companion smartwatch that tracks users’ exercise statistics and features built-in
+                        apps such as music for a more integrated fitness experience.
+                        <br><br><b>Figma Prototype: </b><a
+                            href="https://tinyurl.com/hewwe8um">https://tinyurl.com/hewwe8um</a>
+                        <br><br><b>User Persona: </b><a
+                            href="https://my.visme.co/view/jwor8gxv-user-persona">https://my.visme.co/view/jwor8gxv-user-persona</a>
+                        <br><br><b>Customer Journey: </b><a
+                            href="https://miro.com/app/board/uXjVKDpO7-0=/?share_link_id=437237619791">https://miro.com/app/board/uXjVKDpO7-0=/?share_link_id=437237619791</a>
+                            <br><br><b>Day In The Life: </b><a
+                            href="https://www.canva.com/design/DAGGHtzBO_U/kVVU6Di-prRUxd1pp9EwUw/edit?utm_content=DAGGHtzBO_U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">https://tinyurl.com/7caj4sw9</a>
+                            <br><br><b>Empathy Map: </b><a
+                            href="https://miro.com/app/board/uXjVKEI1T3E=/?share_link_id=908203313382">https://miro.com/app/board/uXjVKEI1T3E=/?share_link_id=908203313382</a>
+                            <br><br><b>Additional Research: </b><a
+                            href="images/Additional Research.pdf">PDF</a>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Software Used</label>
                     <div class="software-used">
                         <div class="software-item">
-                            <img src="logos/unity.png" alt="Unity Logo">
-                            Unity
+                            <img src="logos/figma.jpg" alt="Figma Logo">
+                            Figma
                         </div>
                         <div class="software-item">
-                            <img src="logos/programlang.png">
-                            C#
-                        </div>
-                        
-                        <div class="software-item">
-                            <img src="logos/pureref.png">
-                            PureRef
-
+                            <img src="logos/miro.jpg" alt="Figma Logo">
+                            Miro
                         </div>
                         <div class="software-item">
-                            <img src="logos/pinterest.png">
-                            Pinterest
-
+                            <img src="logos/visme.jpg" alt="Figma Logo">
+                            Visme
                         </div>
                         <div class="software-item">
-                            <img src="logos/firebase.png">
-                            Firebase
-
+                            <img src="logos/canva.png" alt="Figma Logo">
+                            Canva
                         </div>
 
 
@@ -627,21 +641,27 @@
 
                     // Use local images (relative to your project)
                     const images = [
-                        "images/AppleVsBomb login.png",
-                        "images/Mode Selection.png",
-                        "images/Leaderboard.png",
-                        "images/PlayerStats.png",
-                        "images/database.png",
-                        
+                        "images/low fidel mobile.png",
+                        "images/high fidel mobile.png",
+                        "images/low fidel watch.png",
+                        "images/high fidel watch.png",
+                        "images/User Persona.png",
+                        "images/customer journey.png",
+                        "images/Day.png",
+                        "images/empathy.png",
+
                     ];
 
                     const descriptions = [
-                        "Login system - Sends player's login data to a database",
-                        "Varying Levels of Difficulty",
-                        "Leaderboard system - Displays the top scores of all players",
-                        "Stats Page - Display player's personal game data during game session",
-                        "Database - Stores all game data (Scores, Personal Stats, Sign up Details)"
-                        
+                        "Low Fidelity and Mockup of mobile app",
+                        "High Fidelity with animations of mobile app",
+                        "Low Fidelity and Mockup of smartwatch",
+                        "Development of high-fidelity companion mobile applications for smartwatch integration",
+                        "User Persona Research - Understand the user's needs",
+                        "Customer Journey Map - Find out what user would like to achieve with the app",
+                        "Day In The Life - Find out when the user would use the app",
+                        "Empathy Map - Helps visualize the user's perspective by mapping their thoughts, feelings, actions, and experiences",
+
                     ];
 
                     let currentIndex = 0;
@@ -680,7 +700,7 @@
                     });
                 });
 
-                
+
 
             </script>
 </body>
