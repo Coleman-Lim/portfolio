@@ -447,9 +447,10 @@
             color: white;
             text-align: center;
         }
+
         .editor-content {
             line-height: 1.4;
-            
+
         }
     </style>
 </head>
@@ -509,15 +510,20 @@
                 <div class="form-group">
                     <label class="form-label">Description</label>
                     <!-- Edit here to add a description -->
-                    <div class="editor-content">In Singapore, approximately 500,000 people are hearing impaired, yet only about 33.3% of them are proficient in sign language. The high cost of sign language lessons remains a significant barrier, preventing many individuals from accessing the resources they need to communicate effectively. 
-                        <br><br> Together with my groupmates, we developed a VR educational game that can educate more people about sign language, thus expanding public access to sign language education and supporting seamless communication as the deaf community grows. 
+                    <div class="editor-content">In Singapore, approximately 500,000 people are hearing impaired, yet
+                        only about 33.3% of them are proficient in sign language. The high cost of sign language lessons
+                        remains a significant barrier, preventing many individuals from accessing the resources they
+                        need to communicate effectively.
+                        <br><br> Together with my groupmates, we developed a VR educational game that can educate more
+                        people about sign language, thus expanding public access to sign language education and
+                        supporting seamless communication as the deaf community grows.
                         <br><br> We hope to make education a fun journey for all!
                         <br><br><b>Website: </b><a
-                        href="https://tinyurl.com/holohands">https://tinyurl.com/holohands</a>
+                            href="https://tinyurl.com/holohands">https://tinyurl.com/holohands</a>
                         <br><br><b>Game Repository: </b><a
-                        href="https://github.com/ChongYuXiang/IP2.2">https://github.com/ChongYuXiang/IP2.2</a>
+                            href="https://github.com/ChongYuXiang/IP2.2">https://github.com/ChongYuXiang/IP2.2</a>
                         <br><br><b>Additional Research: </b><a
-                        href="https://tinyurl.com/HoloHandsCanva">https://tinyurl.com/HoloHandsCanva</a>
+                            href="https://tinyurl.com/HoloHandsCanva">https://tinyurl.com/HoloHandsCanva</a>
                     </div>
                 </div>
 
@@ -565,17 +571,17 @@
                         <div class="software-item">
                             <img src="logos/Github.jpg">
                             Github
-                            
+
                         </div>
                         <div class="software-item">
                             <img src="logos/firebase.png">
                             Firebase
-                            
+
                         </div>
                         <div class="software-item">
                             <img src="logos/supabase.jpg">
                             Supabase
-                            
+
                         </div>
 
 
@@ -585,16 +591,16 @@
                     <div class="lightbox" id="video-lightbox">
                         <div class="lightbox-content">
                             <div class="video-container">
-                                <video controls>
-                                    <source src="videos/H" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <iframe id="youtube-frame" src="" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                             </div>
                             <div class="close-lightbox" id="close-video-lightbox">
                                 <i class="fas fa-times"></i>
                             </div>
                         </div>
                     </div>
+
 
                     <!-- Image Lightbox -->
                     <div class="lightbox" id="image-lightbox">
@@ -629,8 +635,12 @@
                     const videoLightbox = document.getElementById('video-lightbox');
                     const closeVideoBtn = document.getElementById('close-video-lightbox');
                     const watchDemoBtn = document.getElementById('watch-demo-btn');
+                    const youtubeFrame = document.getElementById('youtube-frame');
+
+                    const youtubeVideoID = "bArSe27B63w"; 
 
                     function openVideoLightbox() {
+                        youtubeFrame.src = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1`;
                         videoLightbox.classList.add('active');
                         document.body.style.overflow = 'hidden';
                     }
@@ -638,11 +648,7 @@
                     function closeVideoLightbox() {
                         videoLightbox.classList.remove('active');
                         document.body.style.overflow = '';
-
-                        const video = videoLightbox.querySelector('video');
-                        if (video) {
-                            video.pause();
-                        }
+                        youtubeFrame.src = ""; 
                     }
 
                     if (watchDemoBtn) {
@@ -686,10 +692,10 @@
                         "images/poster2.png",
                         "images/meeting.jpg",
                         "images/presentation.jpg",
-                        
-                        
 
-                        
+
+
+
                     ];
 
                     const descriptions = [
@@ -714,7 +720,7 @@
 
 
 
-                        
+
                     ];
 
                     let currentIndex = 0;
@@ -753,7 +759,7 @@
                     });
                 });
 
-                
+
 
             </script>
 </body>
