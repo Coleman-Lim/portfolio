@@ -511,6 +511,11 @@
                     <!-- Edit here to add a description -->
                     <div class="editor-content">In this project, I applied my knowledge of dynamic application development to create a simple 2D Catch Game, integrating real-time data storage and retrieval using Firebase.
                         <br><br>The stored data includes user login credentials, player scores for the leaderboard, and personal game statistics for every game session.
+                        <br><br><b>Unity Project: </b><a
+                        href="https://drive.google.com/file/d/1GxeTZqsKi6xECtUjsZPbLjO1X0CDCCYO/view?usp=sharing">AppleVsBomb.zip</a>
+                        <br><br><b>Unity Build: </b><a
+                        href="https://drive.google.com/file/d/1BMQhCmCtEIM2v6DbOwzKLdh5u9R8MVGR/view?usp=sharing">AppleVsBombBuild.zip</a>
+
                         
                         
                     </div>
@@ -551,10 +556,9 @@
                     <div class="lightbox" id="video-lightbox">
                         <div class="lightbox-content">
                             <div class="video-container">
-                                <video controls>
-                                    <source src="videos/H" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <iframe id="youtube-frame" src="" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                             </div>
                             <div class="close-lightbox" id="close-video-lightbox">
                                 <i class="fas fa-times"></i>
@@ -590,13 +594,17 @@
             </div>
             <script>
 
-                document.addEventListener('DOMContentLoaded', function () {
+               document.addEventListener('DOMContentLoaded', function () {
                     // VIDEO lightbox
                     const videoLightbox = document.getElementById('video-lightbox');
                     const closeVideoBtn = document.getElementById('close-video-lightbox');
                     const watchDemoBtn = document.getElementById('watch-demo-btn');
+                    const youtubeFrame = document.getElementById('youtube-frame');
+
+                    const youtubeVideoID = "EsDh4LjxqHY";
 
                     function openVideoLightbox() {
+                        youtubeFrame.src = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1`;
                         videoLightbox.classList.add('active');
                         document.body.style.overflow = 'hidden';
                     }
@@ -604,11 +612,7 @@
                     function closeVideoLightbox() {
                         videoLightbox.classList.remove('active');
                         document.body.style.overflow = '';
-
-                        const video = videoLightbox.querySelector('video');
-                        if (video) {
-                            video.pause();
-                        }
+                        youtubeFrame.src = "";
                     }
 
                     if (watchDemoBtn) {

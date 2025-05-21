@@ -554,13 +554,12 @@
                     </div>
 
                     <!-- Video Lightbox -->
-                    <div class="lightbox" id="video-lightbox">
+                     <div class="lightbox" id="video-lightbox">
                         <div class="lightbox-content">
                             <div class="video-container">
-                                <video controls>
-                                    <source src="videos/H" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <iframe id="youtube-frame" src="" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
                             </div>
                             <div class="close-lightbox" id="close-video-lightbox">
                                 <i class="fas fa-times"></i>
@@ -596,13 +595,17 @@
             </div>
             <script>
 
-                document.addEventListener('DOMContentLoaded', function () {
+               document.addEventListener('DOMContentLoaded', function () {
                     // VIDEO lightbox
                     const videoLightbox = document.getElementById('video-lightbox');
                     const closeVideoBtn = document.getElementById('close-video-lightbox');
                     const watchDemoBtn = document.getElementById('watch-demo-btn');
+                    const youtubeFrame = document.getElementById('youtube-frame');
+
+                    const youtubeVideoID = "PYh5030tP70";
 
                     function openVideoLightbox() {
+                        youtubeFrame.src = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1`;
                         videoLightbox.classList.add('active');
                         document.body.style.overflow = 'hidden';
                     }
@@ -610,11 +613,7 @@
                     function closeVideoLightbox() {
                         videoLightbox.classList.remove('active');
                         document.body.style.overflow = '';
-
-                        const video = videoLightbox.querySelector('video');
-                        if (video) {
-                            video.pause();
-                        }
+                        youtubeFrame.src = "";
                     }
 
                     if (watchDemoBtn) {
@@ -630,7 +629,6 @@
                             closeVideoLightbox();
                         }
                     });
-
                     // IMAGE lightbox
 
                     const openGalleryBtn = document.getElementById('open-gallery');
